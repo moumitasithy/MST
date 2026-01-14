@@ -43,54 +43,7 @@ int main() {
         adj[v].push_back({u, w});
     }
 
-    int root;
-    cin >> root;
-
-    /* ================= PRIM'S ALGORITHM ================= */
-
-    bool visited[1005] = {false};
-    int key[1005], par[1005];
-
-    for (int i = 0; i < N; i++) {
-        key[i] = INT_MAX;
-        par[i] = -1;
-    }
-
-    key[root] = 0;
-
-    int primCost = 0;
-
-    for (int count = 0; count < N; count++) {
-        int u = -1;
-
-        for (int i = 0; i < N; i++) {
-            if (!visited[i] && (u == -1 || key[i] < key[u]))
-                u = i;
-        }
-
-        visited[u] = true;
-        primCost += key[u];
-
-        for (int i = 0; i < adj[u].size(); i++) {
-            int v = adj[u][i].first;
-            int w = adj[u][i].second;
-
-            if (!visited[v] && w < key[v]) {
-                key[v] = w;
-                par[v] = u;
-            }
-        }
-    }
-
-    cout << "Prim's Algorithm\n";
-    cout << "Total weight " << primCost << "\n";
-    cout << "Root node " << root << "\n";
-    for (int i = 0; i < N; i++) {
-        if (par[i] != -1)
-            cout << par[i] << " " << i << "\n";
-    }
-
-    cout << "\n";
+    
 
     /* ================= KRUSKAL'S ALGORITHM ================= */
 
